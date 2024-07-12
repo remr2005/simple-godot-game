@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu67tqqtjsmlo"]
+[gd_scene load_steps=8 format=3 uid="uid://bu67tqqtjsmlo"]
 
 [ext_resource type="Texture2D" uid="uid://cwh4abc3orc12" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="1_nu23c"]
+[ext_resource type="Script" path="res://player.cs" id="1_te4fk"]
 [ext_resource type="Texture2D" uid="uid://cbhor72ndcnsg" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="2_o7ph1"]
 [ext_resource type="Texture2D" uid="uid://h5hkiwgglv1a" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="3_m8wm0"]
 [ext_resource type="Texture2D" uid="uid://bwfvjkmmdwqki" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="4_h0xxy"]
@@ -39,8 +40,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Area2D"]
-position = Vector2(223, 347)
+[node name="player" type="Area2D"]
+script = ExtResource("1_te4fk")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -51,3 +52,5 @@ shape = SubResource("CapsuleShape2D_c15mp")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3num1")
 animation = &"up"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
